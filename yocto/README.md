@@ -28,3 +28,19 @@ For example)
   petter/yoctoautobuild:latest /home/yoctobuilder/yocto_builds core-image-sato
 
 The two last arguments in above line is $1 and $2 arg to the ./run.sh script.
+
+
+DEVMODE
+================
+It's also possible to use this Dockerfile in order to end up in a development mode.
+In order to activate DEVMODE to spawn an interactive shell, type 'bash' as $1 arg.
+
+NOTE: If you want to add the common "-it" parameters to the docker-run cmd, you must
+add it manually as in the below example.
+
+For example)
+  $ docker run -v /path/to/poky:/home/yoctobuilder/git/poky \
+  -v /home/username/:/home/yoctobuilder/yocto_builds \
+  -it petter/yoctoautobuild:latest bash
+
+
