@@ -10,9 +10,11 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get -y install gawk wget git-core diffstat unzip texinfo gcc-multilib \
 build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-xz-utils debianutils iputils-ping vim nano
+xz-utils debianutils iputils-ping vim nano curl sudo
 
 RUN useradd -ms /bin/bash yoctobuilder
+RUN usermod -a -G sudo yoctobuilder
+RUN echo "yoctobuilder:changeme" | chpasswd
 
 USER yoctobuilder
 WORKDIR /home/yoctobuilder/
